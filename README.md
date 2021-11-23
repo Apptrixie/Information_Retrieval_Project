@@ -36,3 +36,9 @@ Types of statement
 2) Prepared statement - to use a prredefined query, but the query has different values, we use the prepared query
 3) Callable statement - to execute the programming language/ Procedural langage in SQL, for stored procedures
 
+we can execute a query using a query object.
+
+types of response: get a table structure back as the response or while inserting values into the database, it tells the numbers of rows affected, this is also a repsonse.
+
+once everything is done, close the connection
+To close the connection, close the object of statement and close the object of connection.
