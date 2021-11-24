@@ -1,0 +1,43 @@
+import java.sql.*;
+
+public static void main(String args[])
+{
+    Class.forName(com.mysql.jdbc.Driver)
+    Connection con = DriverManager.getConnection("URL for database","username","password");
+    
+    // connection is an interface and we can't instantiate the interface directly
+    //so the static method getConnection("URL for database","username","password") gives the object of the interface Connection. This is a static method of class DriverManager.
+    //the connection object takes 3 parameters
+    //now con is the connection object 
+    
+    //now creating the object of the statement 
+    Statement st = con.CreateStatement()
+    
+    //now to execute the query
+    //the answer of this query is stored in the object of ResultSet
+    //resultset is an interface
+    ResultSet rs = st.executeQuery(specify the query like - "select * from student ");
+    
+    //to fetech all the values/rows from the result - getInt() or getString()
+    //we have to shift the pointers for readign the complete result set, the next() method shifts the pointer from location 1 to the next one
+    rs.next();
+    //rs.getInt(specify the column number);
+    rs.getInt(1)+" "+rs.getString(2);
+    // the above query reads data like [1  Ravi]
+    
+    while(rs.next())
+    {
+      rs.next();
+      System.out.println(rs.getInt(1)+" "+rs.getString(2));
+    }
+    
+    //rs.next() does 2 things - 1) shifts the pointer to the next line and 2) checks if there is next line in the result set object
+    
+    //after processing all the data
+    
+    //close the statment object
+    st.close();
+    
+    //close the connection object
+    con.close();
+}
